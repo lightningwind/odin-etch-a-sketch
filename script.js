@@ -8,6 +8,9 @@ function makeGrid(rows, cols) {
             const squareDiv = document.createElement('div');
             squareDiv.classList.add('grid-item'); 
             containerDiv.appendChild(squareDiv);
+            squareDiv.addEventListener('mouseover', () => {
+                squareDiv.style.backgroundColor = 'black';
+            })
         }
     }
 }
