@@ -11,14 +11,20 @@ function populateBoard(size) {
     // Create size * size many squares 
     for (let i = 0; i < size * size; i++) {
         const square = document.createElement("div");
+        square.addEventListener("mouseover", () => {
+            square.style.backgroundColor = "black";
+        })
         square.style.backgroundColor = "blue";
         board.insertAdjacentElement("beforeend", square);
     }
 }
 
 function changeSize(input) {
-    // TODO: Validate input
-    populateBoard(input);
+    if (2 <= input && input <= 100) {
+        populateBoard(input);
+    } else {
+        console.error("Invalid board size");
+    }
 }
 
 populateBoard(16);
