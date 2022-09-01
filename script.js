@@ -21,6 +21,7 @@ function populateBoard() {
         const square = document.createElement("div");
         square.addEventListener("mouseover", colorSquare)
         square.style.backgroundColor = "white";
+        square.classList.add("grid-line");
         board.insertAdjacentElement("beforeend", square);
     }
 }
@@ -29,6 +30,11 @@ function resetBoard() {
     // Erase all squares
     const squares = board.querySelectorAll("div"); 
     squares.forEach(square => square.style.backgroundColor = 'white');
+}
+
+function handleToggle() {
+    const squares = board.querySelectorAll('div');
+    squares.forEach(square => square.classList.toggle("grid-line"));
 }
 
 function changeSize(input) {

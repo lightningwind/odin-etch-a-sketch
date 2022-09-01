@@ -19,9 +19,10 @@
                     <button onclick="changeColor('grey')">Grey</button>
                     <button onclick="changeColor('white')">Eraser</button>
                     <button onclick="changeColor('random')">Random</button>
+                    <button onclick="handleToggle()">Toggle grid lines</button>
                     <button onclick="resetBoard()">Reset</button>
                 </div>
-                <div>
+                <div class="input">
                     <input type="text" placeholder="size of board" value="16" onchange="changeSize(this.value)"/>
                     <button onclick="populateBoard()">Set Size</button>
                 </div>

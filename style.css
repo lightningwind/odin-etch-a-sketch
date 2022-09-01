@@ -9,3 +9,15 @@
 .hidden {
     display: none;
 }
+
+button {
+    padding: 5px;
+}
+
+.buttons {
+    margin-bottom: 10px;
+}
+
+.grid-line {
+    border: 1px solid #ddd;
+}
