@@ -6,6 +6,7 @@ const board = document.querySelector(".board");
 const container = document.querySelector("#container");
 const mode = document.querySelector(".mode");
 const selectedColor = document.querySelector(".color");
+const errorMessage = document.querySelector(".error");
 
 function populateBoard() {
     // Remove previous squares
@@ -33,8 +34,9 @@ function resetBoard() {
 function changeSize(input) {
     if (2 <= input && input <= 100) { // Validate input 
         boardSize = +input; 
+        errorMessage.classList.add('hidden');
     } else {
-        console.error("Invalid board size");
+        errorMessage.classList.remove('hidden');
     }
 }
 
