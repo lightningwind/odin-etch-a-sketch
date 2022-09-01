@@ -1,17 +1,18 @@
 let squareColor = "black"; 
+let boardSize = 16;
 
 const board = document.querySelector(".board");
 
-function populateBoard(size) {
+function populateBoard() {
     // Remove previous squares
     const squares = board.querySelectorAll("div");
     squares.forEach(square => square.remove());
 
-    board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-    board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    board.style.gridTemplateColumns = `repeat(${boardSize}, 1fr)`;
+    board.style.gridTemplateRows = `repeat(${boardSize}, 1fr)`;
     
     // Create size * size many squares 
-    for (let i = 0; i < size * size; i++) {
+    for (let i = 0; i < boardSize * boardSize; i++) {
         const square = document.createElement("div");
         square.addEventListener("mouseover", colorSquare)
         square.style.backgroundColor = "white";
@@ -19,9 +20,15 @@ function populateBoard(size) {
     }
 }
 
+function resetBoard() {
+    // Erase all squares
+    const squares = board.querySelectorAll("div"); 
+    squares.forEach(square => square.style.backgroundColor = 'white');
+}
+
 function changeSize(input) {
-    if (2 <= input && input <= 100) {
-        populateBoard(input);
+    if (2 <= input && input <= 100) { // Validate input 
+        boardSize = +input; 
     } else {
         console.error("Invalid board size");
     }
@@ -39,4 +46,4 @@ function changeColor(color) {
     squareColor = color; 
 }
 
-populateBoard(16);
+populateBoard();
