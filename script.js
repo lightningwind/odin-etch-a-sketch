@@ -1,7 +1,11 @@
 let squareColor = "black"; 
 let boardSize = 16;
+let isColouring = true; 
 
 const board = document.querySelector(".board");
+const container = document.querySelector("#container");
+const mode = document.querySelector(".mode");
+const selectedColor = document.querySelector(".color");
 
 function populateBoard() {
     // Remove previous squares
@@ -35,15 +39,32 @@ function changeSize(input) {
 }
 
 function colorSquare() {
-    if (squareColor === 'random') { // Select random color on every pass
-        this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    } else { // Fixed colour 
-        this.style.backgroundColor = squareColor;
+    if (isColouring) {
+        if (squareColor === 'random') { // Select random color on every pass
+            this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        } else { // Fixed colour 
+            this.style.backgroundColor = squareColor;
+        }
     }
 }
 
 function changeColor(color) {
-    squareColor = color; 
+    squareColor = color;
+    selectedColor.textContent = `Selected colour: ${capitalizeWord(color)}`; 
 }
+
+/* Assume string s is non-empty. */
+function capitalizeWord(s) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+board.addEventListener("click", () => {
+    isColouring = !isColouring;
+    if (isColouring) {
+        mode.textContent = "Colouring enabled";
+    } else {
+        mode.textContent = "Colouring disabled";
+    }
+})
 
 populateBoard();
